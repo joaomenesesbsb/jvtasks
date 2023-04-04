@@ -1,0 +1,9 @@
+header {
+  background-color: var(--color-bg-secundary);
+  height: 90px;
+  display: flex;
+  align-items: center;
+}
+.nav-content  h1{
+  color: var(--color-font-primary);
+}
