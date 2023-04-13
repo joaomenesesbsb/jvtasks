@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JvtasksApplication {
+public class JvtaskApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JvtasksApplication.class, args);
+		SpringApplication.run(JvtaskApplication.class, args);
 	}
 
 }
