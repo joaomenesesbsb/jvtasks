@@ -12,9 +12,10 @@
   --color-font-secundary: #AAAAAA;
   --color-font-tertiary: #F5F5F1;
 
-  --color-bg-primary: #fff;
+  --color-bg-primary: #E8E8E8;
   --color-bg-secundary: #A5DEE5;
   --color-bg-tertiary: #3F3F3F;
+  --color-bg-quaternary: #fff:
 }
 
 * {

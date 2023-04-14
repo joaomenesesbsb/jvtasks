@@ -1,8 +1,9 @@
 package com.jvmeneses.jvtasks.entities;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_user")
@@ -13,9 +14,12 @@ public class User {
     private String name;
     @Column(unique = true)
     private String email;
-    @OneToMany(mappedBy = "id_user")
-    private Set<Task> tasks = new HashSet<>();
+    @OneToMany(mappedBy = "creator")
+    private List<Task> tasks = new ArrayList<>();
 
+    public User(){
+
+    }
     public User(Long id, String name, String email) {
         this.id = id;
         this.name = name;
@@ -46,11 +50,21 @@ public class User {
         this.email = email;
     }
 
-    public Set<Task> getTasks() {
+    public List<Task> getTasks() {
         return tasks;
     }
 
     public void addTask(Task task){
         tasks.add(task);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", tasks=" + tasks +
+                '}';
     }
 }
