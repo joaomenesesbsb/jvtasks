@@ -36,7 +36,7 @@
     transform: scale(10);
   }
   .ag-courses-item_title {
-    min-height: 87px;
+    min-height: 50px;
     margin: 0 0 25px;
   
     overflow: hidden;
@@ -72,9 +72,9 @@
   
     border-radius: 50%;
   
-    -webkit-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
   .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
     background-color: var(--color-quaternary);

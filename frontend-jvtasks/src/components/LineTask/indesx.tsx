@@ -1,18 +1,22 @@
 import "./styles.css";
 
-export default function LineTask() {
+type Props = {
+  task : TaskDTO;
+}
+
+export default function LineTask({task}: Props) {
   return (
     <main>
       <div className="line-container">
         <div className="line-content line-content-check">✔</div>
         <div className="line-content line-content-name">
-          <p>Estudar</p>
+          <p>{task.name}</p>
         </div>
         <div className="line-content line-content-description">
-          <p>Lorem ipsum dolor sit amet.</p>
+          <p>{task.description}</p>
         </div>
         <div className="line-content line-content-date">
-          <p>07/02/2023</p>
+          <p>{task.prompt}</p>
         </div>
       </div>
     </main>
