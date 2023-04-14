@@ -1,6 +1,6 @@
 package com.jvmeneses.jvtasks.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.time.Instant;
 

@@ -1,0 +1,40 @@
+.line-container {
+    padding: 5px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.line-content {
+    padding: 5px;
+    min-height: 30px;
+    background-color:#fff;
+    display: flex;
+    align-items: center;
+
+}
+
+.line-content-check {
+    margin-right: 3px;
+    width: 30px;
+    background-color:#fff;
+    justify-content: center;
+}
+
+.line-content-name {
+    margin-right: 3px;
+    width: 180px;
+}
+
+.line-content-description {
+    margin-right: 3px;
+    width: 580px;
+}
+
+.line-content-date {
+    margin-right: 3px;
+    width: 150px;
+}
+
+@media (min-width: 576px) {
+}

@@ -1,12 +1,6 @@
 package com.jvmeneses.jvtasks.dto;
 
-import com.jvmeneses.jvtasks.entities.Task;
 import com.jvmeneses.jvtasks.entities.User;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserDTO {
 
@@ -16,7 +10,6 @@ public class UserDTO {
 
     public UserDTO() {
     }
-
     public UserDTO(Long id, String name, String email) {
         this.id = id;
         this.name = name;

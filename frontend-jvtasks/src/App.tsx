@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import Home from "./routes/Home"
-import Tasks from "./routes/Tasks"
+import Tasks from "./routes/Home/Tasks"
 
 function App() {
 

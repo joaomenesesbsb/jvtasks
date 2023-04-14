@@ -12,6 +12,9 @@ public class TaskDTO {
     private Boolean complete;
     private UserDTO creator;
 
+    public TaskDTO(){
+    }
+
     public TaskDTO(Long id, String name, Instant prompt, String description, Boolean complete, UserDTO creator) {
         this.id = id;
         this.name = name;
@@ -20,6 +23,7 @@ public class TaskDTO {
         this.complete = complete;
         this.creator = creator;
     }
+
     public TaskDTO(Task entity) {
         this.id = entity.getId();
         this.name = entity.getName();

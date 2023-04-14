@@ -4,12 +4,11 @@ import com.jvmeneses.jvtasks.dto.TaskDTO;
 import com.jvmeneses.jvtasks.entities.Task;
 import com.jvmeneses.jvtasks.entities.User;
 import com.jvmeneses.jvtasks.repositories.TaskRepository;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 
 import java.time.Instant;
 
@@ -52,4 +51,6 @@ public class TaskService {
     public void deleteTask(Long id){
         repository.deleteById(id);
     }
+
+
 }
