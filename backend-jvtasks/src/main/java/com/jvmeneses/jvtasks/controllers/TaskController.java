@@ -20,10 +20,8 @@ public class TaskController {
     private TaskService service;
     @PostMapping
     public ResponseEntity<TaskDTO> insert(@RequestBody TaskDTO dto) {
-        dto = service.insert(dto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}").buildAndExpand(dto.getId()).toUri();
-        return ResponseEntity.created(uri).body(dto);
+        return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(dto.getId()).toUri()).body(service.insert(dto));
     }
     @GetMapping
     public ResponseEntity<Page<TaskDTO>> findAll(Pageable pageable){
@@ -32,8 +30,12 @@ public class TaskController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<TaskDTO> findById(@PathVariable Long id) {
-        TaskDTO dto = service.findById(id);
-        return ResponseEntity.ok(dto);
+        return ResponseEntity.ok(service.findById(id));
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<TaskDTO> updateTasks(@PathVariable Long id, @RequestBody TaskDTO dto) {
+        return ResponseEntity.ok(service.uptade(id, dto));
     }
     @DeleteMapping(value = "/{is}")
     public  ResponseEntity<Void> deleteTask(@PathVariable Long id){

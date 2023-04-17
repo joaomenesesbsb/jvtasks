@@ -6,6 +6,8 @@ import com.jvmeneses.jvtasks.entities.User;
 import com.jvmeneses.jvtasks.exeptions.DatabaseExeption;
 import com.jvmeneses.jvtasks.exeptions.ResourceNotFoundExeption;
 import com.jvmeneses.jvtasks.repositories.TaskRepository;
+
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -26,17 +28,11 @@ public class TaskService {
     public TaskDTO insert(TaskDTO dto) {
 
         Task entity = new Task();
-        User user = new User();
 
-        user.setName(dto.getCreator().getName());
-        user.setId(dto.getCreator().getId());
-        user.setEmail(dto.getCreator().getEmail());
+        entity = copyDtoToEntity(dto, entity);
 
-        entity.setName(dto.getName());
         entity.setComplete(false);
         entity.setPrompt(Instant.now());
-        entity.setDescription(dto.getDescription());
-        entity.setCreator(user);
 
         entity = repository.save(entity);
         return new TaskDTO(entity);
@@ -58,6 +54,19 @@ public class TaskService {
     }
 
     @Transactional
+    public TaskDTO uptade(Long id, TaskDTO dto) {
+        try {
+            Task entity = repository.getReferenceById(id);
+            copyDtoToEntity(dto, entity);
+            return  new TaskDTO(entity);
+        }
+        catch (EntityNotFoundException e){
+            throw new ResourceNotFoundExeption("Recurso não encontrado");
+        }
+
+    }
+
+    @Transactional
     public void deleteTask(Long id){
         try {
             repository.deleteById(id);
@@ -68,6 +77,23 @@ public class TaskService {
         catch (DataIntegrityViolationException e){
             throw new DatabaseExeption("Falha de integridade referencial");
         }
+    }
+
+    private Task copyDtoToEntity(TaskDTO dto, Task entity){
+
+        User user = new User();
+
+        user.setName(dto.getCreator().getName());
+        user.setId(dto.getCreator().getId());
+        user.setEmail(dto.getCreator().getEmail());
+
+        entity.setName(dto.getName());
+        entity.setComplete(dto.getComplete());
+        entity.setPrompt(dto.getPrompt());
+        entity.setDescription(dto.getDescription());
+        entity.setCreator(user);
+
+        return entity;
     }
 
 
