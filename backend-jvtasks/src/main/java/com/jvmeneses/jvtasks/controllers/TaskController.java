@@ -1,7 +1,6 @@
 package com.jvmeneses.jvtasks.controllers;
 
 import com.jvmeneses.jvtasks.dto.TaskDTO;
-import com.jvmeneses.jvtasks.entities.Task;
 import com.jvmeneses.jvtasks.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,8 +19,7 @@ public class TaskController {
     private TaskService service;
     @PostMapping
     public ResponseEntity<TaskDTO> insert(@RequestBody TaskDTO dto) {
-        return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}").buildAndExpand(dto.getId()).toUri()).body(service.insert(dto));
+        return ResponseEntity.ok(service.insert(dto));
     }
     @GetMapping
     public ResponseEntity<Page<TaskDTO>> findAll(Pageable pageable){

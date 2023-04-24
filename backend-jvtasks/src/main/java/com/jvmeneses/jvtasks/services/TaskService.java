@@ -32,7 +32,7 @@ public class TaskService {
         entity = copyDtoToEntity(dto, entity);
 
         entity.setComplete(false);
-        entity.setPrompt(Instant.now());
+        entity.setStart(Instant.now());
 
         entity = repository.save(entity);
         return new TaskDTO(entity);
@@ -41,7 +41,6 @@ public class TaskService {
     @Transactional
     public Page<TaskDTO> findAll(Pageable pageable){
         Page<Task> result = repository.findAll(pageable);
-        System.out.println(result);
         return result.map(x -> new TaskDTO(x));
     }
 
@@ -89,6 +88,7 @@ public class TaskService {
 
         entity.setName(dto.getName());
         entity.setComplete(dto.getComplete());
+        entity.setStart(dto.getStart());
         entity.setPrompt(dto.getPrompt());
         entity.setDescription(dto.getDescription());
         entity.setCreator(user);

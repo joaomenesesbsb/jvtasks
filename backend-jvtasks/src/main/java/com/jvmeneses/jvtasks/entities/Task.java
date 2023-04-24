@@ -12,6 +12,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private Instant start;
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant prompt;
     private String description;
@@ -47,6 +48,14 @@ public class Task {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Instant getStart() {
+        return start;
+    }
+
+    public void setStart(Instant start) {
+        this.start = start;
     }
 
     public Instant getPrompt() {

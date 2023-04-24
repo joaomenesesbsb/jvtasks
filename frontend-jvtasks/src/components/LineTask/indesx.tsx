@@ -1,10 +1,20 @@
 import "./styles.css";
+import { useEffect, useState } from "react";
+import * as dateUtils from "../../utils/date"
 
 type Props = {
   task : TaskDTO;
 }
 
 export default function LineTask({task}: Props) {
+
+  const [datePrompt, setDatePrompt ] = useState<string>();
+
+  useEffect(() => {
+    setDatePrompt(dateUtils.converterISOToLoalDate(task.prompt));
+  },[]);
+
+
   return (
     <main>
       <div className="line-container">
@@ -16,7 +26,7 @@ export default function LineTask({task}: Props) {
           <p>{task.description}</p>
         </div>
         <div className="line-content line-content-date">
-          <p>{task.prompt}</p>
+          <p>{datePrompt}</p>
         </div>
       </div>
     </main>

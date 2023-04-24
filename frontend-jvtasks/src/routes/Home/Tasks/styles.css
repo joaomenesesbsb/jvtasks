@@ -1,0 +1,4 @@
+.btn-task-item {
+    display: flex;
+    justify-content: flex-start;
+}
